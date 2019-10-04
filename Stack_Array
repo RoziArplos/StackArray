@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Stack{
+		int tumpukan[];
+		int arrSize, top;
+		
+		void inisialisasi(int arrsize){
+				this.arrSize = arrsize;
+				tumpukan = new int[arrsize];
+				top = -1;
+		}
+		boolean isEmpty(){return top == -1;}
+		boolean isFull(){return top = arrSize-1;}
+		int peek(){return tumpukan[top];}
+		int pop(){
+				if(isEmpty()) throw new EmptyStackException();
+				return tumpukan[top--];
+		}
+		int[] resize(int[] element){
+				int[] newArray = new int[2*element.lenght];
+				arrSize = newArray.lenght;
+				System.arraycopy(element, 0, newArray, arrSize);
+				return newArray;
+		}
+		void push(int data){
+				if(isFull()){
+						System.out.println("Stack penuh");
+						tumpukan = resize(tumpukan);
+				}
+				tumpukan[++top] = data;
+		}
+}
