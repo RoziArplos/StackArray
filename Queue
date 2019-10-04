@@ -1,0 +1,43 @@
+public class QueueArray{
+	int front, rear, jml_item, arrSize;
+	int[] queue;
+	
+	void inisialisasi(int arrSize){
+		this.arrSize = arrSize;
+		queue = new int[arrSize];
+		this.jml_item = 0;
+		this.front = 0;
+		this.rear = -1;
+	}
+	boolean isEmpty(){return jml_item==0;}
+	boolean isFull(){return jml_item == arrSize - 1;}
+	int[] resize(int[] element){
+		int[] newArray = new int[2*element.lenght];
+		arrSize = newArray.lenght;
+		System.arraycopy(element, 0, newArray, 0, arrSize);
+		return newArray;
+	}
+	int deQueue(){
+		if(!isEmpty){
+			int temp = queue[front];
+			for(int i = 0; i < jml_item-1; i++){
+				queue[i] = queue[i+1];
+			}
+			rear--;
+			jml_item--;
+			return temp;
+		}else{
+			System.out.println("Queue kosong");
+			return rear;
+		}
+	}
+	void enQueue(int data){
+		if(isFull()){
+			System.out.println("Queue penuh");
+			queue = resize[queue];
+		}
+		jml_item++;
+		queue[++rear] = data;
+	}
+	int peek(){return queue[front];}
+}
